@@ -118,16 +118,17 @@
 import { ref } from "vue"
 import { useRouter } from "vue-router"
 import { LogOut, Menu, X, Waves } from "lucide-vue-next"
-
-// You would later replace this with a composable equivalent of useAuth()
 import { useAuth } from "../stores/useAuth"
+import { toast } from "../composables/Toast"
 
 const { isAuthenticated, logout } = useAuth()
+const { showToast } = toast
 const router = useRouter()
 const isMenuOpen = ref(false)
 
 function handleLogout() {
   logout()
+  showToast("Logout successful!", "success")
   router.push("/")
   isMenuOpen.value = false
 }
