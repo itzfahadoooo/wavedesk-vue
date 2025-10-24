@@ -30,7 +30,7 @@ const router = createRouter({
 })
 
 // Navigation guard for protected routes
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   const auth = useAuth()
   
   // Redirect authenticated users away from login/signup pages
